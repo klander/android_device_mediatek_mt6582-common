@@ -83,13 +83,13 @@ TARGET_USERIMAGES_SPARSE_EXT_DISABLED := false
 
 # SELINUX
 BOARD_SEPOLICY_DIRS := \
-       $(LOCAL_PATH)/sepolicy
+	$(LOCAL_PATH)/sepolicy
 
 BOARD_SEPOLICY_UNION := \
-       device.te \
-       app.te \
-       system.te \
-       file_contexts
+	device.te \
+	app.te \
+	system.te \
+	file_contexts
 
 # WLAN
 BOARD_HAS_QCOM_WLAN := true

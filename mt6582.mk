@@ -25,14 +25,14 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 PRODUCT_TAGS += dalvik.gc.type-precise
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/root/init.recovery.$(TARGET_BOARD_PLATFORM).rc:root/init.recovery.$(TARGET_BOARD_PLATFORM).rc \
-    $(LOCAL_PATH)/rootdir/root/init.rc:root/init.rc \
-    $(LOCAL_PATH)/rootdir/root/init.$(TARGET_BOARD_PLATFORM).rc:root/init.$(TARGET_BOARD_PLATFORM).rc \
-    $(LOCAL_PATH)/rootdir/root/init.project.rc:root/init.project.rc \
-    $(LOCAL_PATH)/rootdir/root/init.modem.rc:root/init.modem.rc \
-    $(LOCAL_PATH)/rootdir/root/init.xlog.rc:root/init.xlog.rc \
-    $(LOCAL_PATH)/rootdir/root/ueventd.$(TARGET_BOARD_PLATFORM).rc:root/ueventd.$(TARGET_BOARD_PLATFORM).rc \
-    $(LOCAL_PATH)/rootdir/root/init.$(TARGET_BOARD_PLATFORM).usb.rc:root/init.$(TARGET_BOARD_PLATFORM).usb.rc
+	$(LOCAL_PATH)/rootdir/root/init.recovery.$(TARGET_BOARD_PLATFORM).rc:root/init.recovery.$(TARGET_BOARD_PLATFORM).rc \
+	$(LOCAL_PATH)/rootdir/root/init.rc:root/init.rc \
+	$(LOCAL_PATH)/rootdir/root/init.$(TARGET_BOARD_PLATFORM).rc:root/init.$(TARGET_BOARD_PLATFORM).rc \
+	$(LOCAL_PATH)/rootdir/root/init.project.rc:root/init.project.rc \
+	$(LOCAL_PATH)/rootdir/root/init.modem.rc:root/init.modem.rc \
+	$(LOCAL_PATH)/rootdir/root/init.xlog.rc:root/init.xlog.rc \
+	$(LOCAL_PATH)/rootdir/root/ueventd.$(TARGET_BOARD_PLATFORM).rc:root/ueventd.$(TARGET_BOARD_PLATFORM).rc \
+	$(LOCAL_PATH)/rootdir/root/init.$(TARGET_BOARD_PLATFORM).usb.rc:root/init.$(TARGET_BOARD_PLATFORM).usb.rc
 
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/rootdir/configs/android.hardware.microphone.xml:system/etc/permissions/android.hardware.microphone.xml \
@@ -55,16 +55,16 @@ PRODUCT_PACKAGES += \
 	Torch
 
 PRODUCT_PACKAGES += \
-    libxlog
+	libxlog
 
 PRODUCT_PACKAGES += \
-    lights.$(TARGET_BOARD_PLATFORM)
+	lights.$(TARGET_BOARD_PLATFORM)
 
 # audio
 PRODUCT_PACKAGES += \
-    audio.primary.$(TARGET_BOARD_PLATFORM) \
-    audio.r_submix.default \
-    audio_policy.default
+	audio.primary.$(TARGET_BOARD_PLATFORM) \
+	audio.r_submix.default \
+	audio_policy.default
 
 PRODUCT_PACKAGES += \
 	setup_fs \
