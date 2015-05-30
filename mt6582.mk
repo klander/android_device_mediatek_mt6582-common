@@ -15,6 +15,8 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
+TARGET_BOARD_PLATFORM := mt6582
+
 $(call inherit-product-if-exists, vendor/mediatek/$(TARGET_BOARD_PLATFORM)-common/$(TARGET_BOARD_PLATFORM)-common-vendor.mk)
 
 LOCAL_PATH := device/mediatek/$(TARGET_BOARD_PLATFORM)-common
@@ -54,7 +56,8 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
 	libxlog \
-	lib_driver_cmd_mt66xx
+	lib_driver_cmd_mt66xx \
+	gps_mtk_epod
 
 PRODUCT_PACKAGES += \
 	lights.$(TARGET_BOARD_PLATFORM) \

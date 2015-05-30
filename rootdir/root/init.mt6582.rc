@@ -1121,3 +1121,11 @@ service MtkCodecService /system/bin/MtkCodecService
     class main
     user root
     group audio media sdcard_r
+
+service gps_mtk_epod /system/bin/gps_mtk_epod
+    user root
+    oneshot
+    disabled
+
+on post-fs-data
+    start gps_mtk_epod
