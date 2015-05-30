@@ -15,8 +15,6 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-TARGET_BOARD_PLATFORM := mt6582
-
 $(call inherit-product-if-exists, vendor/mediatek/$(TARGET_BOARD_PLATFORM)-common/$(TARGET_BOARD_PLATFORM)-common-vendor.mk)
 
 LOCAL_PATH := device/mediatek/$(TARGET_BOARD_PLATFORM)-common
@@ -55,10 +53,12 @@ PRODUCT_PACKAGES += \
 	Torch
 
 PRODUCT_PACKAGES += \
-	libxlog
+	libxlog \
+	lib_driver_cmd_mt66xx
 
 PRODUCT_PACKAGES += \
-	lights.$(TARGET_BOARD_PLATFORM)
+	lights.$(TARGET_BOARD_PLATFORM) \
+	gps.$(TARGET_BOARD_PLATFORM)
 
 # audio
 PRODUCT_PACKAGES += \
@@ -70,12 +70,64 @@ PRODUCT_PACKAGES += \
 	setup_fs \
 	e2fsck
 
-PRODUCT_PROPERTY_OVERRIDES := \
+# MediaTek
+PRODUCT_PROPERTY_OVERRIDES += \
 	ro.mediatek.version.release=ALPS.W10.24.p0 \
 	ro.mediatek.platform=MT6582 \
 	ro.mediatek.chip_ver=S01 \
 	ro.mediatek.version.branch=KK1.MP1 \
 	ro.mediatek.version.sdk=2 \
+	persist.mtk.aee.aed=on
+
+# RIL
+PRODUCT_PROPERTY_OVERRIDES += \
 	ro.telephony.sim.count=2 \
-	ro.allow.mock.location=0 \
-	persist.mtk.wcn.combo.chipid=-1
+	persist.radio.fd.counter=15 \
+	persist.radio.fd.off.counter=5 \
+	persist.radio.fd.r8.counter=15 \
+	persist.radio.fd.off.r8.counter=5 \
+	rild.libpath=/system/lib/mtk-ril.so \
+	ril.specific.sm_cause=0 \
+	ril.external.md=0 \
+	ril.current.share_modem=2 \
+	ril.first.md=1 \
+	ril.flightmode.poweroffMD=1 \
+	ril.telephony.mode=0 \
+	ro.telephony.default_network=9,9 \
+	ril.active.md=0 \
+	ro.telephony.ril_class=MediaTekRIL \
+	ril.radiooff.poweroffMD=0 \
+	persist.multisim.config=dsds \
+	persist.radio.multisim.config=dsds \
+	persist.dsds.enabled=true \
+	ro.dual.sim.phone=true
+
+# WLAN
+PRODUCT_PROPERTY_OVERRIDES += \
+	persist.mtk.wcn.combo.chipid=-1 \
+	wifi.direct.interface=p2p0 \
+	wifi.tethering.interface=ap0 \
+	wifi.interface=wlan0 \
+	ro.mediatek.wlan.wsc=1 \
+	ro.mediatek.wlan.p2p=1 \
+	mediatek.wlan.ctia=0
+
+# FMRadio
+PRODUCT_PROPERTY_OVERRIDES += \
+	fmradio.driver.enable=1
+
+# Misc
+PRODUCT_PROPERTY_OVERRIDES += \
+	mux.debuglog.enable=1 \
+	ro.sys.usb.mtp.whql.enable=0 \
+	sys.ipo.pwrdncap=2 \
+	ro.sys.usb.storage.type=mtp,adb \
+	ro.sys.usb.bicr=yes \
+	ro.camera.sound.forced=0 \
+	ro.audio.silent=0 \
+	ro.allow.mock.location=0
+
+# Graphics
+PRODUCT_PROPERTY_OVERRIDES += \
+	debug.hwui.render_dirty_regions=false \
+	ro.opengles.version=131072
